@@ -42,17 +42,6 @@ pipeline {
                 }
             }
         }
-
-        stage('Only for production') {
-          when {
-            branch 'production'
-            environment name: 'APP_ENV', value: 'prod'
-            anyOf {
-              environment name: 'DEPLOY_TO', vlaue: 'production'
-              environment name: 'DEPLOY_TO', value: 'staging'
-            }
-          }
-        }
         
         // aws s3 에 파일을 올림
         stage('Deploy Frontend') {
