@@ -60,31 +60,19 @@ pipeline {
               // If Maven was able to run the tests, even if some of the test
               // failed, record the test results and archive the jar file.
               success {
-                  echo 'Successfully Cloned Repository'
+                  echo 'Successfully Pulled Repository'
 
-                  emailext body: 'Successfully deployed frontend!', subject: 'Deploy Frontend Success', to: 'dnstlr2933@gmail.com'
-
-                  // mail  to: 'dnstlr2933@gmail.com',
-                  //       subject: "Deploy Frontend Success",
-                  //       body: "Successfully deployed frontend!"
-
+                  slackSend (channel: '#jenkinstest', color: '#00FF00', message: "Successfully Deploy fronted")
               }
 
               failure {
                   echo 'I failed :('
 
-                  // emailext body: 'Something is wrong with deploy frontend', 
-                  //           recipientProviders:[[$class: 'DevelopersRecipientProvider'], 
-                  //           [$class: 'RequesterRecipientProvider']], 
-                  //           subject: 'Failed Pipelinee'
-
-                  emailext  body: 'Something is wrong with deploy frontend',
-                            subject: 'Failed Pipelinee',
-                            to: 'dnstlr2933@gmail.com'
-
                   // mail  to: 'dnstlr2933@gmail.com',
                   //       subject: "Failed Pipelinee",
                   //       body: "Something is wrong with deploy frontend"
+
+                  slackSend (channel: '#jenkinstest', color: '#FF0000', message: "Failed Pipelinee")
               }
           }
         }
@@ -161,20 +149,10 @@ pipeline {
 
           post {
             success {
-
-              // emailext body: 'Successfully deployed!', 
-              //             recipientProviders:[[$class: 'DevelopersRecipientProvider'], 
-              //               [$class: 'RequesterRecipientProvider']], 
-              //               subject: 'Deploy Success'
-
-              emailext  body: 'Successfully deployed!',
-                        subject: 'Deploy Success',
-                        to: 'dnstlr2933@gmail.com'
-
               // mail  to: 'dnstlr2933@gmail.com',
               //       subject: "Deploy Success",
               //       body: "Successfully deployed!"
-                  
+              slackSend (channel: '#jenkinstest', color: '#00FF00', message: "Deploy Success")
             }
           }
         }
