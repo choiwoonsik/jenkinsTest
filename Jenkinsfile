@@ -62,18 +62,25 @@ pipeline {
               success {
                   echo 'Successfully Cloned Repository'
 
-                  mail  to: 'dnstlr2933@gmail.com',
-                        subject: "Deploy Frontend Success",
-                        body: "Successfully deployed frontend!"
+                  emailtext body: 'Successfully deployed frontend!', recipentProviders:[[$class: 'DevelopersRecipentProvider'], [$class: 'RequesterRecipentProvider']], subject: 'Deploy Frontend Success'
+
+                  // mail  to: 'dnstlr2933@gmail.com',
+                  //       subject: "Deploy Frontend Success",
+                  //       body: "Successfully deployed frontend!"
 
               }
 
               failure {
                   echo 'I failed :('
 
-                  mail  to: 'dnstlr2933@gmail.com',
-                        subject: "Failed Pipelinee",
-                        body: "Something is wrong with deploy frontend"
+                  emailtext body: 'Something is wrong with deploy frontend', 
+                            recipentProviders:[[$class: 'DevelopersRecipentProvider'], 
+                            [$class: 'RequesterRecipentProvider']], 
+                            subject: 'Failed Pipelinee'
+
+                  // mail  to: 'dnstlr2933@gmail.com',
+                  //       subject: "Failed Pipelinee",
+                  //       body: "Something is wrong with deploy frontend"
               }
           }
         }
@@ -149,9 +156,14 @@ pipeline {
 
           post {
             success {
-              mail  to: 'dnstlr2933@gmail.com',
-                    subject: "Deploy Success",
-                    body: "Successfully deployed!"
+
+              emailtext body: 'Successfully deployed!', 
+                          recipentProviders:[[$class: 'DevelopersRecipentProvider'], 
+                            [$class: 'RequesterRecipentProvider']], 
+                            subject: 'Deploy Success'
+              // mail  to: 'dnstlr2933@gmail.com',
+              //       subject: "Deploy Success",
+              //       body: "Successfully deployed!"
                   
             }
           }
