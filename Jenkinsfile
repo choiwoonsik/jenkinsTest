@@ -3,7 +3,7 @@ pipeline {
     agent any
 
     triggers {
-        pollSCM('H/1 * * * *')
+        pollSCM('*/1 * * * *')
     }
 
     environment {
@@ -62,12 +62,7 @@ pipeline {
               success {
                   echo 'Successfully Cloned Repository'
 
-                  // emailext body: 'Successfully deployed frontend!', recipientProviders:[[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Deploy Frontend Success'
-                  // emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
-
-                  emailext  body: 'Successfully deployed frontend!',
-                            subject: 'Deploy Frontend Success',
-                            to: 'dnstlr2933@gmail.com'
+                  emailext body: 'Successfully deployed frontend!', subject: 'Deploy Frontend Success', to: 'dnstlr2933@gmail.com'
 
                   // mail  to: 'dnstlr2933@gmail.com',
                   //       subject: "Deploy Frontend Success",
