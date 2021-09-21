@@ -62,7 +62,7 @@ pipeline {
               success {
                   echo 'Successfully Cloned Repository'
 
-                  emailext body: 'Successfully deployed frontend!', recipentProviders:[[$class: 'DevelopersRecipentProvider'], [$class: 'RequesterRecipentProvider']], subject: 'Deploy Frontend Success'
+                  emailext body: 'Successfully deployed frontend!', recipientProviders:[[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Deploy Frontend Success'
                   emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
 
                   // mail  to: 'dnstlr2933@gmail.com',
@@ -75,8 +75,8 @@ pipeline {
                   echo 'I failed :('
 
                   emailext body: 'Something is wrong with deploy frontend', 
-                            recipentProviders:[[$class: 'DevelopersRecipentProvider'], 
-                            [$class: 'RequesterRecipentProvider']], 
+                            recipientProviders:[[$class: 'DevelopersRecipientProvider'], 
+                            [$class: 'RequesterRecipientProvider']], 
                             subject: 'Failed Pipelinee'
 
                   // mail  to: 'dnstlr2933@gmail.com',
@@ -159,8 +159,8 @@ pipeline {
             success {
 
               emailext body: 'Successfully deployed!', 
-                          recipentProviders:[[$class: 'DevelopersRecipentProvider'], 
-                            [$class: 'RequesterRecipentProvider']], 
+                          recipientProviders:[[$class: 'DevelopersRecipientProvider'], 
+                            [$class: 'RequesterRecipientProvider']], 
                             subject: 'Deploy Success'
               // mail  to: 'dnstlr2933@gmail.com',
               //       subject: "Deploy Success",
