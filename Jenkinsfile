@@ -62,7 +62,8 @@ pipeline {
               success {
                   echo 'Successfully Cloned Repository'
 
-                  emailtext body: 'Successfully deployed frontend!', recipentProviders:[[$class: 'DevelopersRecipentProvider'], [$class: 'RequesterRecipentProvider']], subject: 'Deploy Frontend Success'
+                  emailext body: 'Successfully deployed frontend!', recipentProviders:[[$class: 'DevelopersRecipentProvider'], [$class: 'RequesterRecipentProvider']], subject: 'Deploy Frontend Success'
+                  emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
 
                   // mail  to: 'dnstlr2933@gmail.com',
                   //       subject: "Deploy Frontend Success",
@@ -73,7 +74,7 @@ pipeline {
               failure {
                   echo 'I failed :('
 
-                  emailtext body: 'Something is wrong with deploy frontend', 
+                  emailext body: 'Something is wrong with deploy frontend', 
                             recipentProviders:[[$class: 'DevelopersRecipentProvider'], 
                             [$class: 'RequesterRecipentProvider']], 
                             subject: 'Failed Pipelinee'
@@ -157,7 +158,7 @@ pipeline {
           post {
             success {
 
-              emailtext body: 'Successfully deployed!', 
+              emailext body: 'Successfully deployed!', 
                           recipentProviders:[[$class: 'DevelopersRecipentProvider'], 
                             [$class: 'RequesterRecipentProvider']], 
                             subject: 'Deploy Success'
