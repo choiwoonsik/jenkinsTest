@@ -153,6 +153,7 @@ pipeline {
             dir ('./server'){
               // docker rm -f $(docker ps -aq) 컨테이너가 돌고 있을 경우 제거
                 sh '''
+                docker rm -f $(docker ps -aq)
                 docker run -p 80:80 -d server
                 '''
             }
